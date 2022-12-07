@@ -1,0 +1,44 @@
+/*reference for googlefont*/
+/*font-family: 'Faster One', cursive;*/
+/*font-family: 'Racing Sans One', cursive;*/
+/*font-family: 'Nunito', sans-serif;*/
+
+
+body{
+    background: linear-gradient(#FFFFFF, #999999);
+    /*background-color: #B0413E;*/
+    font-family: 'Nunito', sans-serif;
+    /*font-weight: bold;*/
+}
+
+h1{
+    font-family: 'Faster One', cursive;
+}
+
+h2{
+    font-family: 'Racing Sans One', cursive;
+}
+
+#map{
+    height: 200px;
+    border: 2px solid yellow;
+}
+
+.leaflet-container {
+    height: 600px;
+    width: 600px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.flash{
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+}
+
+.flash-success{
+    background-color: lawngreen;
+}
