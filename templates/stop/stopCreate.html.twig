@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{ form_start(stopForm) }}
+    {{ form_row(stopForm.stopName) }}
+    {{ form_row(stopForm.stopLatitude) }}
+    {{ form_row(stopForm.stopLongitude) }}
+    {{ form_row(stopForm.stopPluscode) }}
+
+    <button type="submit">Créer une étape</button>
+    {{ form_end(stopForm) }}
+
+{% endblock %}
+
+{% block title %}
+{{ parent() }} | Création d'une étape {% endblock %}
+

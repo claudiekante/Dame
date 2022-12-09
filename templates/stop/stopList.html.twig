@@ -12,5 +12,41 @@
 
             </ul>
         {% endfor %}
+
+
+            <p></p>
+            {#    following, the code Leaflet to display openstreetmap#}
+
+{#            <div id="map"></div>#}
+{#            <script>#}
+
+{#                const map = L.map('map').setView([{{ stop.stopLatitude }}, {{ stop.stopLongitude }}], 12);#}
+
+{#                const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {#}
+{#                    maxZoom: 19,#}
+{#                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'#}
+{#                }).addTo(map);#}
+
+{#                const marker = L.marker([{{ stop.stopLatitude }}, {{ stop.stopLongitude }}]).addTo(map);#}
+
+{#                #}{#const circle = L.circle([{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}], #}{#}#}
+{#                #}{#    color: 'red',#}
+{#                #}{#    fillColor: '#f03',#}
+{#                #}{#    fillOpacity: 0.5,#}
+{#                #}{#    radius: 33#}
+{#                #}{#}).addTo(map);#}
+
+{#                #}{#var polygon = L.polygon([#}
+{#                #}{#    [{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}],#}
+{#                #}{#    [{{ leg.endLegLatitude }}, {{ leg.endLegLongitude }}],#}
+{#                #}{#    [{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}]#}
+{#                #}{#]).addTo(map);#}
+
+
+{#                map.fitBounds(marker.getBounds());#}
+
+
+{#            </script>#}
+
     </section>
 {% endblock %}
