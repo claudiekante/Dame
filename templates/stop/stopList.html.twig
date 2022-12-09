@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ parent() }} | Liste des étapes {% endblock %}
+
+{% block body %}
+    <img src="{{ asset('img/LogoDame.jpg') }}" alt="DAME">
+    <h3>Liste de tous les arrêts enregistrés</h3>
+    <div></div>
+    <section>
+        {% for stopList in stopsList %}
+            <ul>
+                <a href="{{path('stop_detail', {'id': stopList.id}) }}" alt="détail de l'étape"><li>{{  stopList.stopName }}</li></a>
+
+            </ul>
+        {% endfor %}
+    </section>
+{% endblock %}
