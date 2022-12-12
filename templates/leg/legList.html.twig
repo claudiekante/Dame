@@ -10,6 +10,7 @@
                 <a href="{{ path('leg_detail', {'id': legList.id}) }}" alt="détail du parcours">
                     <li>{{ legList.legName }}</li>
                 </a>
+                <p>prova {{ legList.startStop.stopLatitude }}</p>
 
             </ul>
         {% endfor %}
