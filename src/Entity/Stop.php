@@ -20,9 +20,20 @@ class Stop
     private $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
     private $stopName;
+    public function __toString() {
+        return $this->stopName;
+    }
+
+//    /**
+//     * @ORM\Column(type="string", length=255)
+//     */
+//    private $stopName;
+
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=6)

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h3>Détail du parcours</h3>
+    Nom du parcours : {{ leg.legName }}
+    Point du départ : {{ leg.startStop }}
+    Point d'arrivée : {{ leg.endStop }}
+    Description : {{ leg.legDescription }}
+    km : {{ leg.legKilometers }}
+    Le parcours est accessible? {{ leg.legAccessible }}
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} | Détail du parcours
+{% endblock %}
+

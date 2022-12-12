@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(legForm) }}
+    {{ form_row(legForm.legName) }}
+    {{ form_row(legForm.startStop  ) }}
+    {{ form_row(legForm.endStop  ) }}
+    {{ form_row(legForm.legDescription  ) }}
+    {{ form_row(legForm.legKilometers  ) }}
+    {{ form_row(legForm.legAccessible  ) }}
+
+
+    <button type="submit">Créer un parcours</button>
+    {{ form_end(legForm) }}
+
+
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} | Création d'un parcours
+{% endblock %}
+

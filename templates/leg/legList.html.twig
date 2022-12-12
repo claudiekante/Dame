@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ parent() }} | Liste des parcours {% endblock %}
+{% block body %}
+{#    <img src="{{ asset('img/LogoDame.jpg') }}" alt="DAME">#}
+    <h3>Liste de tous les parcours</h3>
+    <div></div>
+    <section>
+        {% for legList in legsList %}
+            <ul>
+                <a href="{{ path('leg_detail', {'id': legList.id}) }}" alt="détail du parcours">
+                    <li>{{ legList.legName }}</li>
+                </a>
+
+            </ul>
+        {% endfor %}
+
+        {% endblock %}
