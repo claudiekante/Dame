@@ -46,6 +46,17 @@ class Leg
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateModifiedLeg;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Stop::class, inversedBy="legStart")
+     */
+    private $startStop;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Stop::class, inversedBy="legEnd")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $endStop;
     
 
     public function getId(): ?int
@@ -121,6 +132,30 @@ class Leg
     public function setDateModifiedLeg(?\DateTimeInterface $dateModifiedLeg): self
     {
         $this->dateModifiedLeg = $dateModifiedLeg;
+
+        return $this;
+    }
+
+    public function getStartStop(): ?Stop
+    {
+        return $this->startStop;
+    }
+
+    public function setStartStop(?Stop $startStop): self
+    {
+        $this->startStop = $startStop;
+
+        return $this;
+    }
+
+    public function getEndStop(): ?Stop
+    {
+        return $this->endStop;
+    }
+
+    public function setEndStop(?Stop $endStop): self
+    {
+        $this->endStop = $endStop;
 
         return $this;
     }

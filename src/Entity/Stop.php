@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\StopRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +48,22 @@ class Stop
      * @ORM\Column(type="datetime")
      */
     private $dateModifiedStop;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Leg::class, mappedBy="startStop")
+     */
+    private $legStart;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Leg::class, mappedBy="endStop")
+     */
+    private $legEnd;
+
+    public function __construct()
+    {
+        $this->legStart = new ArrayCollection();
+        $this->legEnd = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +138,66 @@ class Stop
     public function setDateModifiedStop(\DateTimeInterface $dateModifiedStop): self
     {
         $this->dateModifiedStop = $dateModifiedStop;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Leg>
+     */
+    public function getLegStart(): Collection
+    {
+        return $this->legStart;
+    }
+
+    public function addLegStart(Leg $legStart): self
+    {
+        if (!$this->legStart->contains($legStart)) {
+            $this->legStart[] = $legStart;
+            $legStart->setStartStop($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLegStart(Leg $legStart): self
+    {
+        if ($this->legStart->removeElement($legStart)) {
+            // set the owning side to null (unless already changed)
+            if ($legStart->getStartStop() === $this) {
+                $legStart->setStartStop(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Leg>
+     */
+    public function getLegEnd(): Collection
+    {
+        return $this->legEnd;
+    }
+
+    public function addLegEnd(Leg $legEnd): self
+    {
+        if (!$this->legEnd->contains($legEnd)) {
+            $this->legEnd[] = $legEnd;
+            $legEnd->setEndStop($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLegEnd(Leg $legEnd): self
+    {
+        if ($this->legEnd->removeElement($legEnd)) {
+            // set the owning side to null (unless already changed)
+            if ($legEnd->getEndStop() === $this) {
+                $legEnd->setEndStop(null);
+            }
+        }
 
         return $this;
     }
