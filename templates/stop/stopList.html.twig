@@ -8,45 +8,179 @@
     <section>
         {% for stopList in stopsList %}
             <ul>
-                <a href="{{path('stop_detail', {'id': stopList.id}) }}" alt="détail de l'étape"><li>{{  stopList.stopName }}</li></a>
+                <a href="{{ path('stop_detail', {'id': stopList.id}) }}" alt="détail de l'étape">
+                    <li>{{ stopList.stopName }}</li>
+                </a>
 
             </ul>
         {% endfor %}
 
-
-            <p></p>
-            {#    following, the code Leaflet to display openstreetmap#}
-
-{#            <div id="map"></div>#}
-{#            <script>#}
-
-{#                const map = L.map('map').setView([{{ stop.stopLatitude }}, {{ stop.stopLongitude }}], 12);#}
-
-{#                const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {#}
-{#                    maxZoom: 19,#}
-{#                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'#}
-{#                }).addTo(map);#}
-
-{#                const marker = L.marker([{{ stop.stopLatitude }}, {{ stop.stopLongitude }}]).addTo(map);#}
-
-{#                #}{#const circle = L.circle([{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}], #}{#}#}
-{#                #}{#    color: 'red',#}
-{#                #}{#    fillColor: '#f03',#}
-{#                #}{#    fillOpacity: 0.5,#}
-{#                #}{#    radius: 33#}
-{#                #}{#}).addTo(map);#}
-
-{#                #}{#var polygon = L.polygon([#}
-{#                #}{#    [{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}],#}
-{#                #}{#    [{{ leg.endLegLatitude }}, {{ leg.endLegLongitude }}],#}
-{#                #}{#    [{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}]#}
-{#                #}{#]).addTo(map);#}
+        <div id="dataelement" data-stops="{{ stopsList | json_encode() }}"></div>
 
 
-{#                map.fitBounds(marker.getBounds());#}
+        <p></p>
+{#        let coords = {#}
+{#        latitude: {{ stopsList.latitude |json_encode() }},#}
+{#        longitude: {{ stopsList.longitude|json_encode() }}#}
+{#        };#}
+
+        {#    following, the code Leaflet to display openstreetmap #}
+
+        <div id="map"></div>
+        <script>
+
+            let coords = {{ stopsList |json_encode()|raw }};
 
 
-{#            </script>#}
+            {#let dataStops = '{{ stopsList }}';#}
+            {#let stopsObj = Json.parse(dataStops);#}
+
+             {#let data = {{ stopsList | json_encode() }};#}
+             {#console.log(data);#}
+
+            const map = L.map('map').setView([42.3233, 2.2549], 12);
+
+
+            const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+
+{#            {% for stopList in stopsList %}#}
+{#            let nome{{ stopList.id }} = L.marker([{{ stopList.stopLatitude }}, {{ stopList.stopLongitude }}]).addTo(map);#}
+{#            {% endfor %}#}
+
+            coords02 = [{
+                'coordinates':[{% for stopList in stopsList %}{{ stopList.stopLatitude }}, {% endfor %}
+                {% for stopList in stopsList %}{{ stopList.stopLongitude }}, {% endfor %}
+            ]
+            }];
+
+            for (item of coords02){
+                L.marker([item.coordinates]).addTo(map)
+            };
+
+            // coords02.forEach(element=>L.marker([element.coordinates[0] , element.coordinates[1] ])).addTo(map);
+
+
+
+            //
+            // for (item of stopsObj) {
+            //     L.marker([item.stopLatitude, item.stopLongitude]).addTo(map);
+            // } ;
+
+            // let jsonString = $('#dataelement').data('')
+            // let data = JSON.parse(jsonString);
+
+          let geojson =  {
+                "type": "FeatureCollection",
+                "features": [
+                {
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": {
+                        "coordinates": [
+                            2.988916051407159,
+                            45.79495791513614
+                        ],
+                        "type": "Point"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": {
+                        "coordinates": [
+                            2.9896205404359932,
+                            45.8119504841367
+                        ],
+                        "type": "Point"
+                    }
+                }
+            ]
+            };
+          // L.geoJSON(geojson).addTo(map);
+          //  const marker = L.marker([42.3233, 2.2549]).addTo(map);
+
+            console.log(coords)
+
+            // for (coord of coords){
+            //     L.marker([coord.stopLatitude, coord.stoplongitude]).addTo(map)
+            // };
+
+
+
+            {# let nome16 = L.marker([{{ stopsList.stopLatitude[0]}}, {{ stopsList.stopLongitude[0]}}]).addTo(map); #}
+            {# let stopGroup = L.layerGroup(); #}
+
+            {# {% for stopList in stopsList %} #}
+            {# L.marker([{{ stopList.stopLatitude }}, {{ stopList.stopLongitude }}]).addTo(stopGroup); #}
+            {# {% endfor %} #}
+            {# map.addLayer(stopGroup); #}
+
+
+
+
+
+
+            {#                {% for stopList in stopsList %} #}
+            {#                let marker = L.marker(stopGroup[{{ stopsList.stopLatitude }}, {{ stopList.stopLongitude }}]) #}
+            {#                {% endfor %} #}
+
+            // let marker = L.marker([42.3233, 2.2549]).addTo(map);
+            // let marker2 = L.marker([42.3248, 2.2549]).addTo(map);
+
+
+            {# let json = {{ stopsList }}.json(); #}
+
+
+
+          // console.log(map);
+
+
+
+            {# let marker = L.marker( {% for stopList in stopsList %} #}
+            {# [{{ stopList.stopLatitude }}, {{ stopList.stopLongitude }}] #}
+            {# {% endfor %} ).addTo(map); #}
+
+            {# let control = 1; #}
+            {# if (control === 1 ){ #}
+            {#    console.log('prova') #}
+            {#    let stops = JSON.parse({{stopsList}}) #}
+            {# }else{ #}
+            {#    console.log('prova2'); #}
+            {# } #}
+
+            {# let stops =JSON.parse({{ stopsList }}); #}
+
+            {# let marker =  {% for stopList in stopsList %} #}
+            {# L.marker([{{ stopList.stopLatitude }}, {{ stopList.stopLongitude }}]).addTo(map); #}
+            {# {% endfor %} #}
+
+            {#   let marker = L.marker (   {% for stopList in stopsList %} #}
+            {# [{{ stopList.stopLatitude }}, {{ stopList.stopLongitude }}] #}
+            {#   {% endfor %}).addTo(map); #}
+
+            {# const marker = L.marker([{{ stop.stopLatitude }}, {{ stop.stopLongitude }}]).addTo(map); #}
+
+            {# const circle = L.circle([{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}], } #}
+            {#    color: 'red', #}
+            {#    fillColor: '#f03', #}
+            {#    fillOpacity: 0.5, #}
+            {#    radius: 33 #}
+            {# }).addTo(map); #}
+
+            {# var polygon = L.polygon([ #}
+            {#    [{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}], #}
+            {#    [{{ leg.endLegLatitude }}, {{ leg.endLegLongitude }}], #}
+            {#    [{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}] #}
+            {# ]).addTo(map); #}
+
+
+            // map.fitBounds(marker.getBounds());
+
+
+        </script>
 
     </section>
 {% endblock %}
