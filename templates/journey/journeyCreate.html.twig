@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(journeyForm) }}
+    {{ form_row(journeyForm.journeyName   ) }}
+    {{ form_row(journeyForm.journeyDescription   ) }}
+    {{ form_row(journeyForm.journeyFirstLeg   ) }}
+    {{ form_row(journeyForm.journeySecondLeg   ) }}
+    {{ form_row(journeyForm.journeyThirdLeg   ) }}
+    {{ form_row(journeyForm.journeyFourthLeg   ) }}
+    {{ form_row(journeyForm.journeyFifthLeg   ) }}
+    {{ form_row(journeyForm.journeySixthLeg   ) }}
+    {{ form_row(journeyForm.journeyDateStart   ) }}
+
+    <button type="submit">Créer un voyage</button>
+    {{ form_end(journeyForm) }}
+    <p>Les champs marqués par un astérisque sont obligatoires </p>
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} | Création d'un voyage
+{% endblock %}
+

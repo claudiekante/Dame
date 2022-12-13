@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h3>Détail du voyage</h3>
+    Nom du voyage : {{ journey.journeyName }}
+    Description : {{ journey.journeyDescription }}
+    Départ prévu le : {{ journey.journeyDateStart | date('d/m/Y')  }}
+    Voici où nous allons passer:
+    <p>{{ journey.journeyFirstLeg.legName }}</p>
+    <p>{{ journey.journeyFirstLeg.legDescription }}</p>
+    {% if  (journey.journeySecondLeg is defined) %}
+        <p>{{ journey.journeySecondLeg.legName }}</p>
+        <p>{{ journey.journeySecondLeg.legDescription }}</p>
+    {% endif %}
+{#    {% if  (journey.journeyThirdLeg is defined) %}#}
+    {% if  (journey.journeyThirdLeg) %}
+        <p>{{ journey.journeyThirdLeg.legName }}</p>
+        <p>{{ journey.journeyThirdLeg.legDescription }}</p>
+    {% endif %}
+
+    {% if  (journey.journeyFourthLeg) %}
+        <p>{{ journey.journeyFourthLeg.legName }}</p>
+        <p>{{ journey.journeyFourthLeg.legDescription }}</p>
+    {% endif %}
+
+    {% if  (journey.journeyFifthLeg) %}
+        <p>{{ journey.journeyFifthLeg.legName }}</p>
+        <p>{{ journey.journeyFifthLeg.legDescription }}</p>
+    {% endif %}
+
+    {% if  (journey.journeySixthLeg) %}
+        <p>{{ journey.journeySixthLeg.legName }}</p>
+        <p>{{ journey.journeySixthLeg.legDescription }}</p>
+    {% endif %}
+
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} | Détail du voyage
+{% endblock %}
+

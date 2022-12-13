@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ parent() }} | Liste des voyages {% endblock %}
+{% block body %}
+{#    <img src="{{ asset('img/LogoDame.jpg') }}" alt="DAME">#}
+<h3>Liste de tous les voyages</h3>
+<div></div>
+<section>
+    {% for journeyList in journeysList %}
+        <ul>
+            <a href="{{ path('journey_detail', {'id': journeyList.id}) }}" alt="détail du voyage">
+                <li>{{ journeyList.journeyName }}</li>
+            </a>
+{#            <p>prova {{ legList.startStop.stopLatitude }}</p>#}
+            <p>{{ journeyList.journeyDescription }}</p>
+
+        </ul>
+    {% endfor %}
+
+    {% endblock %}
