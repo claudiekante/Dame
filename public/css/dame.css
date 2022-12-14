@@ -24,6 +24,13 @@ h2{
     font-family: 'Racing Sans One', cursive;
 }
 
+.subtitleDetail {
+    font-family: 'Racing Sans One', cursive;
+    /*font-weight: lighter;*/
+    font-size: 140%;
+    color: #da3545;
+}
+
 #map{
     height: 200px;
     border: 2px solid yellow;

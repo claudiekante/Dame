@@ -2,37 +2,136 @@
 
 {% block body %}
 
-    <h3>Détail du voyage</h3>
-    Nom du voyage : {{ journey.journeyName }}
-    Description : {{ journey.journeyDescription }}
-    Départ prévu le : {{ journey.journeyDateStart | date('d/m/Y')  }}
-    Voici où nous allons passer:
-    <p>{{ journey.journeyFirstLeg.legName }}</p>
-    <p>{{ journey.journeyFirstLeg.legDescription }}</p>
-    {% if  (journey.journeySecondLeg is defined) %}
-        <p>{{ journey.journeySecondLeg.legName }}</p>
-        <p>{{ journey.journeySecondLeg.legDescription }}</p>
-    {% endif %}
-{#    {% if  (journey.journeyThirdLeg is defined) %}#}
-    {% if  (journey.journeyThirdLeg) %}
-        <p>{{ journey.journeyThirdLeg.legName }}</p>
-        <p>{{ journey.journeyThirdLeg.legDescription }}</p>
-    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
 
-    {% if  (journey.journeyFourthLeg) %}
-        <p>{{ journey.journeyFourthLeg.legName }}</p>
-        <p>{{ journey.journeyFourthLeg.legDescription }}</p>
-    {% endif %}
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        <h2>{{ journey.journeyName }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Départ prévu le : {{ journey.journeyDateStart | date('d/m/Y') }}</p>
+                        <h5 class="card-title">{{ journey.journeyDescription }}</h5>
 
-    {% if  (journey.journeyFifthLeg) %}
-        <p>{{ journey.journeyFifthLeg.legName }}</p>
-        <p>{{ journey.journeyFifthLeg.legDescription }}</p>
-    {% endif %}
+                        <p class="card-text">Voici notre parcours : </p>
+                    </div>
 
-    {% if  (journey.journeySixthLeg) %}
-        <p>{{ journey.journeySixthLeg.legName }}</p>
-        <p>{{ journey.journeySixthLeg.legDescription }}</p>
-    {% endif %}
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="subtitleDetail">{{ journey.journeyFirstLeg.legName }}</div>
+                            <div>{{ journey.journeyFirstLeg.legDescription }}</div>
+                            <div>Km : {{ journey.journeyFirstLeg.legKilometers }}</div>
+
+                        </li>
+
+                        {% if  (journey.journeySecondLeg) %}
+                            <li class="list-group-item">
+                                <div class="subtitleDetail">{{ journey.journeySecondLeg.legName }}</div>
+                                <div>{{ journey.journeySecondLeg.legDescription }}</div>
+                                <div>Km : {{ journey.journeySecondLeg.legKilometers }}</div>
+                            </li>
+                        {% endif %}
+
+                        {% if  (journey.journeyThirdLeg) %}
+                            <li class="list-group-item">
+                                <div class="subtitleDetail">{{ journey.journeyThirdLeg.legName }}</div>
+                                <div>{{ journey.journeyThirdLeg.legDescription }}</div>
+                                <div>Km : {{ journey.journeyThirdLeg.legKilometers }}</div>
+                            </li>
+                        {% endif %}
+
+                        {% if  (journey.journeyFourthLeg) %}
+                            <li class="list-group-item">
+                                <div class="subtitleDetail">{{ journey.journeyFourthLeg.legName }}</div>
+                                <div>{{ journey.journeyFourthLeg.legDescription }}</div>
+                                <div>Km : {{ journey.journeyFourthLeg.legKilometers }}</div>
+                            </li>
+                        {% endif %}
+
+                        {% if  (journey.journeyFifthLeg) %}
+                            <li class="list-group-item">
+                                <div class="subtitleDetail">{{ journey.journeyFifthLeg.legName }}</div>
+                                <div>{{ journey.journeyFifthLeg.legDescription }}</div>
+                                <div>Km : {{ journey.journeyFifthLeg.legKilometers }}</div>
+                            </li>
+                        {% endif %}
+
+                        {% if  (journey.journeySixthLeg) %}
+                            <li class="list-group-item">
+                                <div class="subtitleDetail">{{ journey.journeySixthLeg.legName }}</div>
+                                <div>{{ journey.journeySixthLeg.legDescription }}</div>
+                                <div>Km : {{ journey.journeySixthLeg.legKilometers }}</div>
+                            </li>
+                        {% endif %}
+
+
+{#                        ---- test for diffrent buttons#}
+{#                        <li class="list-group-item">#}
+{#                            <button type="submit" class="btn btn-secondary" onclick=window.location.href="{{ path('journey_list') }}">Retour path</button>#}
+{#                            <a href="javascript:history.go(-1)">#}
+{#                                <button type="button" class="btn btn-secondary">Retour javascripts</button></a>#}
+{#                            <a href="{{ path('journey_list') }}">#}
+{#                                <button type="button" class="btn btn-secondary">Retour path</button></a>#}
+{#                        </li>#}
+{#                        ---- end test for diffrent buttons#}
+
+{#                        <li class="list-group-item">A third item</li>#}
+                    </ul>
+
+                </div>
+
+
+            </div>
+            <div class="col-lg-1">
+
+            </div>
+        </div>
+
+            <div class="row m-3">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+
+        <a href="javascript:history.go(-1)">
+            <button type="button" class="btn btn-secondary btn-sm">Retour</button></a>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+    </div>
+
+
+{#    <h3>Détail du voyage</h3>#}
+{#    Nom du voyage : {{ journey.journeyName }}#}
+{#    Description : {{ journey.journeyDescription }}#}
+{#    Départ prévu le : {{ journey.journeyDateStart | date('d/m/Y') }}#}
+{#    Voici où nous allons passer:#}
+{#    <p>{{ journey.journeyFirstLeg.legName }}</p>#}
+{#    <p>{{ journey.journeyFirstLeg.legDescription }}</p>#}
+{#    {% if  (journey.journeySecondLeg) %}#}
+{#        <p>{{ journey.journeySecondLeg.legName }}</p>#}
+{#        <p>{{ journey.journeySecondLeg.legDescription }}</p>#}
+{#    {% endif %}#}
+
+{#    {% if  (journey.journeyThirdLeg) %}#}
+{#        <p>{{ journey.journeyThirdLeg.legName }}</p>#}
+{#        <p>{{ journey.journeyThirdLeg.legDescription }}</p>#}
+{#    {% endif %}#}
+
+{#    {% if  (journey.journeyFourthLeg) %}#}
+{#        <p>{{ journey.journeyFourthLeg.legName }}</p>#}
+{#        <p>{{ journey.journeyFourthLeg.legDescription }}</p>#}
+{#    {% endif %}#}
+
+{#    {% if  (journey.journeyFifthLeg) %}#}
+{#        <p>{{ journey.journeyFifthLeg.legName }}</p>#}
+{#        <p>{{ journey.journeyFifthLeg.legDescription }}</p>#}
+{#    {% endif %}#}
+
+{#    {% if  (journey.journeySixthLeg) %}#}
+{#        <p>{{ journey.journeySixthLeg.legName }}</p>#}
+{#        <p>{{ journey.journeySixthLeg.legDescription }}</p>#}
+{#    {% endif %}#}
 
 {% endblock %}
 
