@@ -5,10 +5,15 @@
 
 
 body{
-    background: linear-gradient(#FFFFFF, #999999);
+    /*background: linear-gradient(#FFFFFF, #999999);*/
     /*background-color: #B0413E;*/
     font-family: 'Nunito', sans-serif;
     /*font-weight: bold;*/
+}
+
+#base {
+    /*background: linear-gradient(#FFFFFF, #999999);*/
+    background-color: #ffffff;
 }
 
 h1{
