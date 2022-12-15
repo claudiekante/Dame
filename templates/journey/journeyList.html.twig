@@ -1,19 +1,73 @@
 {% extends 'base.html.twig' %}
 {% block title %} {{ parent() }} | Liste des voyages {% endblock %}
 {% block body %}
-{#    <img src="{{ asset('img/LogoDame.jpg') }}" alt="DAME">#}
-<h3>Liste de tous les voyages</h3>
-<div></div>
-<section>
-    {% for journeyList in journeysList %}
-        <ul>
-            <a href="{{ path('journey_detail', {'id': journeyList.id}) }}" alt="détail du voyage">
-                <li>{{ journeyList.journeyName }}</li>
-            </a>
-{#            <p>prova {{ legList.startStop.stopLatitude }}</p>#}
-            <p>{{ journeyList.journeyDescription }}</p>
+    {#    <img src="{{ asset('img/LogoDame.jpg') }}" alt="DAME"> #}
 
-        </ul>
-    {% endfor %}
+    <div class="container">
 
-    {% endblock %}
+        <div class="row m-1">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10 text-center">
+                <h1>Les voyages de D.A.M.E.</h1>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+
+                <div class="card">
+
+                    {% for journeyList in journeysList %}
+                        <div class="card-header bg-danger text-white">
+                            <h2><a href="{{ path('journey_detail', {'id': journeyList.id}) }}" alt="détail du voyage"
+                                   class="listTitle">
+                                    {{ journeyList.journeyName }}
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Départ prévu le
+                                : {{ journeyList.journeyDateStart | date('d/m/Y') }}</p>
+                            <h5 class="card-title">{{ journeyList.journeyDescription }}</h5>
+                        </div>
+
+
+                    {% endfor %}
+
+                </div>
+
+
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+
+                <a href="javascript:history.go(-1)">
+                    <button type="button" class="btn btn-secondary btn-sm">Retour</button>
+                </a>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+    </div>
+
+{#    <h3>Liste de tous les voyages</h3>#}
+{#    <div></div>#}
+
+{#    {% for journeyList in journeysList %}#}
+{#        <ul>#}
+{#            <a href="{{ path('journey_detail', {'id': journeyList.id}) }}" alt="détail du voyage">#}
+{#                <li>{{ journeyList.journeyName }}</li>#}
+{#            </a>#}
+{#            #}{#            <p>prova {{ legList.startStop.stopLatitude }}</p> #}
+{#            <p>{{ journeyList.journeyDescription }}</p>#}
+
+{#        </ul>#}
+{#    {% endfor %}#}
+
+{% endblock %}

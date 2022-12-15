@@ -2,10 +2,65 @@
 {% block title %} {{ parent() }} | Liste des étapes {% endblock %}
 
 {% block body %}
-    <img src="{{ asset('img/LogoDame.jpg') }}" alt="DAME">
+
+    <div class="container">
+
+        <div class="row m-1">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10 text-center">
+                <h3>Liste des étapes enregistrées</h3>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <div class="card">
+
+                    {% for stopList in stopsList %}
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <a href="{{ path('stop_detail', {'id': stopList.id}) }}" alt="détail de l'étape">
+                                    {{ stopList.stopName }}
+                                </a>
+                            </li>
+                        </ul>
+                    {% endfor %}
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="{{ path('stop_create') }}">
+                                <button type="button" class="btn btn-success btn-sm">Créer une nouvelle étape</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <a href="javascript:history.go(-1)">
+                    <button type="button" class="btn btn-secondary btn-sm">Retour</button></a>&nbsp;
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+    </div>
+
+    <p> . </p>
+    <p> . </p>
+    <p> . </p>
+    <p> . </p>
+    <p>parte qui sotto da conservare per risolvere il problema delle mappe</p>
+
     <h3>Liste de tous les arrêts enregistrés</h3>
     <div></div>
-    <section>
+
         {% for stopList in stopsList %}
             <ul>
                 <a href="{{ path('stop_detail', {'id': stopList.id}) }}" alt="détail de l'étape">

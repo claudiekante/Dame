@@ -24,6 +24,19 @@ h2{
     font-family: 'Racing Sans One', cursive;
 }
 
+a.listTitle:link, a.listTitle:visited, a.listTitle:active {
+    text-decoration: none;
+}
+
+.listTitle{
+    font-family: 'Racing Sans One', cursive;
+    color: #FFFFFF;
+}
+
+a.listTitle:hover {
+    color: #FFFFFF;
+}
+
 .subtitleDetail {
     font-family: 'Racing Sans One', cursive;
     /*font-weight: lighter;*/

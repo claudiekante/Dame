@@ -1,18 +1,71 @@
 {% extends 'base.html.twig' %}
 {% block title %} {{ parent() }} | Liste des parcours {% endblock %}
 {% block body %}
-{#    <img src="{{ asset('img/LogoDame.jpg') }}" alt="DAME">#}
-    <h3>Liste de tous les parcours</h3>
-    <div></div>
-    <section>
-        {% for legList in legsList %}
-            <ul>
-                <a href="{{ path('leg_detail', {'id': legList.id}) }}" alt="détail du parcours">
-                    <li>{{ legList.legName }}</li>
-                </a>
-                <p>prova {{ legList.startStop.stopLatitude }}</p>
+    {#    <img src="{{ asset('img/LogoDame.jpg') }}" alt="DAME"> #}
 
-            </ul>
-        {% endfor %}
 
-        {% endblock %}
+    <div class="container">
+
+        <div class="row m-1">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10 text-center">
+                <h3>Liste des parcours enregistrés</h3>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <div class="card">
+
+                    {% for legList in legsList %}
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <a href="{{ path('leg_detail', {'id': legList.id}) }}" alt="détail du parcours">
+                                    {{ legList.legName }}
+                                </a>
+                                {#                            <p>prova {{ legList.startStop.stopLatitude }}</p> #}
+
+                            </li>
+                        </ul>
+                    {% endfor %}
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="{{ path('leg_create') }}">
+                                <button type="button" class="btn btn-success btn-sm">Créer un nouveau parcours</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <a href="javascript:history.go(-1)">
+                    <button type="button" class="btn btn-secondary btn-sm">Retour</button></a>&nbsp;
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+    </div>
+
+    {#    <h3>Liste de tous les parcours</h3> #}
+    {#    <div></div> #}
+
+    {#        {% for legList in legsList %} #}
+    {#            <ul> #}
+    {#                <a href="{{ path('leg_detail', {'id': legList.id}) }}" alt="détail du parcours"> #}
+    {#                    <li>{{ legList.legName }}</li> #}
+    {#                </a> #}
+    {#                <p>prova {{ legList.startStop.stopLatitude }}</p> #}
+
+    {#            </ul> #}
+    {#        {% endfor %} #}
+
+{% endblock %}

@@ -1,49 +1,106 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h3>Détail de l'étape</h3>
-    Nom de l'étape : {{ stop.stopName }}
-    Latitude de l'étape : {{ stop.stopLatitude }}
-    Longitude de l'étape : {{ stop.stopLongitude }}
-    PlusCode de l'étape : {{ stop.stopPluscode }}
-    <p></p>
-    Cette étape a été crée le : {{ stop.dateCreatedStop.format("d, m, Y") }}
-    Cette étape a été modifiée le : {{ stop.dateModifiedStop.format("d, m, Y") }}
 
-    <p></p>
+    <div class="container">
 
-{#    following, the code Leaflet to display openstreetmap#}
+        <div class="row m-1">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10 text-center">
+                <h3>Détail de l'étape : {{ stop.stopName }}</h3>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
 
-    <div id="map"></div>
-    <script>
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5">
 
-        const map = L.map('map').setView([{{ stop.stopLatitude }}, {{ stop.stopLongitude }}], 12);
+                <table class="table table-bordered">
 
-        const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        }).addTo(map);
+                    <tbody>
+                    <tr>
+                        <td class="text-end">Latitude : </td>
+                        <td>  {{ stop.stopLatitude }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-end">Longitude : </td>
+                        <td> {{ stop.stopLongitude }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-end">PlusCode : </td>
+                        <td> {{ stop.stopPluscode }}</td>
+                    </tr>
+{#                    <tr>#}
+{#                        <td class="text-end">Étape créée le : </td>#}
+{#                        <td> {{ stop.dateCreatedStop |format_datetime() }}</td>#}
+{#                    </tr>#}
+                    <tr>
+                        <td class="text-end">Étape créée le : </td>
+                        <td> {{ stop.dateCreatedStop |format_datetime('full', 'none', locale='fr') }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-end">Étape modifiée le : </td>
+                        <td> {{ stop.dateModifiedStop | format_datetime ('full', 'none', locale='fr') }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        const marker = L.marker([{{ stop.stopLatitude }}, {{ stop.stopLongitude }}]).addTo(map);
+            <div class="col-lg-5">
 
-        {#const circle = L.circle([{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}], {#}
-        {#    color: 'red',#}
-        {#    fillColor: '#f03',#}
-        {#    fillOpacity: 0.5,#}
-        {#    radius: 33#}
-        {#}).addTo(map);#}
+                {#    following, the code Leaflet to display openstreetmap#}
 
-        {#var polygon = L.polygon([#}
-        {#    [{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}],#}
-        {#    [{{ leg.endLegLatitude }}, {{ leg.endLegLongitude }}],#}
-        {#    [{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}]#}
-        {#]).addTo(map);#}
+                <div id="map"></div>
+                <script>
+
+                    const map = L.map('map').setView([{{ stop.stopLatitude }}, {{ stop.stopLongitude }}], 12);
+
+                    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    }).addTo(map);
+
+                    const marker = L.marker([{{ stop.stopLatitude }}, {{ stop.stopLongitude }}]).addTo(map);
+
+                    {#const circle = L.circle([{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}], {#}
+                    {#    color: 'red',#}
+                    {#    fillColor: '#f03',#}
+                    {#    fillOpacity: 0.5,#}
+                    {#    radius: 33#}
+                    {#}).addTo(map);#}
+
+                    {#var polygon = L.polygon([#}
+                    {#    [{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}],#}
+                    {#    [{{ leg.endLegLatitude }}, {{ leg.endLegLongitude }}],#}
+                    {#    [{{ leg.startLegLatitude }}, {{ leg.startLegLongitude }}]#}
+                    {#]).addTo(map);#}
 
 
-        map.fitBounds(marker.getBounds());
+                    map.fitBounds(marker.getBounds());
 
 
-    </script>
+                </script>
+
+
+            </div>
+
+            <div class="col-lg-1">
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <a href="javascript:history.go(-1)">
+                    <button type="button" class="btn btn-secondary btn-sm">Retour</button></a>&nbsp;
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+    </div>
+
+
 
 {% endblock %}
 
