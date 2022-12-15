@@ -16,4 +16,5 @@ Dame est le site de l'association DAME, présentant l'association et l'organisat
 ### twig
 * IntlExtension
 * extra-bundle
+* bootstrap form are settled in config/packages/twig.yaml
 

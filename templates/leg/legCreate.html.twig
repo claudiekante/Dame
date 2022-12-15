@@ -1,19 +1,86 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form_start(legForm) }}
-    {{ form_row(legForm.legName) }}
-    {{ form_row(legForm.startStop  ) }}
-    {{ form_row(legForm.endStop  ) }}
-    {{ form_row(legForm.legDescription  ) }}
-    {{ form_row(legForm.legKilometers  ) }}
-    {{ form_row(legForm.legAccessible  ) }}
+
+    <div class="container">
+
+        <div class="row m-1">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10 text-center">
+                <h3>Un nouveau parcours</h3>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <div class="card text-bg-light">
+                    <div class="card-body">
+
+                        {{ form_start(legForm) }}
+                        {{ form_row(legForm.legName) }}
+
+                        <div class="row">
+                            <div class="col">
+                                {{ form_row(legForm.startStop  ) }}
+                            </div>
+
+                            <div class="col">
+                                {{ form_row(legForm.endStop  ) }}
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                {{ form_row(legForm.legDescription  ) }}
+                            </div>
+                        </div>
 
 
-    <button type="submit">Créer un parcours</button>
-    {{ form_end(legForm) }}
+                        <div class="row">
+                            <div class="col">
+                                {{ form_row(legForm.legAccessible  ) }}
+                            </div>
 
-    <p>Les champs marqués par un astérisque sont obligatoires </p>
+                            <div class="col">
+                                {{ form_row(legForm.legKilometers  ) }}
+                            </div>
+
+                        </div>
+                        <p> * Les champs marqués par un astérisque sont obligatoires </p>
+
+                        <button type="submit" class="btn btn-success btn-sm">Enregistrer</button>
+                        {{ form_end(legForm) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <a href="javascript:history.go(-1)">
+                    <button type="button" class="btn btn-secondary btn-sm">Retour</button></a>&nbsp;
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
 
 {% endblock %}
 

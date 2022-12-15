@@ -19,31 +19,31 @@ class LegType extends AbstractType
     {
         $builder
             ->add('legName', TextType::class, [
-                'label' => 'Le nom du parcours *'
+                'label' => 'Nom *'
             ])
             ->add('startStop', EntityType::class, [
-                'label' => 'Lieu du départ *',
+                'label' => 'Départ *',
                 'class'=>Stop::class,
                 'choice_label'=>'stopName',
                 'placeholder'=>'choisir une étape *',
 //               'mapped' => false
             ])
             ->add('endStop', EntityType::class, [
-                'label' => 'Lieu d\'arrivée *',
+                'label' => 'Arrivée *',
                 'class'=>Stop::class,
                 'choice_label'=>'stopName',
                 'placeholder'=>'choisir une étape *',
 //               'mapped' => false
             ])
             ->add('legDescription', TextareaType::class, [
-                'label' => 'Description du parcours *'
+                'label' => 'Description du trajet *'
             ])
             ->add('legKilometers', NumberType::class, [
-                'label' => 'Le kilométrage du parcours *',
+                'label' => 'Kilométrage *',
                 'help'=>'ex 999.99'
             ] )
             ->add('legAccessible', ChoiceType::class, [
-                'label' => 'La route est accessible en ce moment ? *',
+                'label' => 'La route est accessible ? *',
                 'choices' => [
                     'Oui' => true,
                     'Non' => false,

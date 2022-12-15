@@ -20,7 +20,7 @@
 
                     {% for stopList in stopsList %}
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
+                            <li class="list-group-item text-bg-light">
                                 <a href="{{ path('stop_detail', {'id': stopList.id}) }}" alt="détail de l'étape">
                                     {{ stopList.stopName }}
                                 </a>
@@ -31,7 +31,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <a href="{{ path('stop_create') }}">
-                                <button type="button" class="btn btn-success btn-sm">Créer une nouvelle étape</button>
+                                <button type="button" class="btn btn-warning btn-sm">Créer une nouvelle étape</button>
                             </a>
                         </li>
                     </ul>

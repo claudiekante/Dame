@@ -1,20 +1,99 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form_start(journeyForm) }}
-    {{ form_row(journeyForm.journeyName   ) }}
-    {{ form_row(journeyForm.journeyDescription   ) }}
-    {{ form_row(journeyForm.journeyFirstLeg   ) }}
-    {{ form_row(journeyForm.journeySecondLeg   ) }}
-    {{ form_row(journeyForm.journeyThirdLeg   ) }}
-    {{ form_row(journeyForm.journeyFourthLeg   ) }}
-    {{ form_row(journeyForm.journeyFifthLeg   ) }}
-    {{ form_row(journeyForm.journeySixthLeg   ) }}
-    {{ form_row(journeyForm.journeyDateStart   ) }}
 
-    <button type="submit">Créer un voyage</button>
-    {{ form_end(journeyForm) }}
-    <p>Les champs marqués par un astérisque sont obligatoires </p>
+    <div class="container">
+
+        <div class="row m-1">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10 text-center">
+                <h3>Un nouveau voyage</h3>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <div class="card text-bg-light">
+                    <div class="card-body">
+
+                        {{ form_start(journeyForm) }}
+                        {{ form_row(journeyForm.journeyName) }}
+                        {{ form_row(journeyForm.journeyDescription) }}
+
+                        <div class="row">
+                            <div class="col">
+                                {{ form_row(journeyForm.journeyFirstLeg   ) }}
+                            </div>
+
+                            <div class="col">
+                                {{ form_row(journeyForm.journeySecondLeg   ) }}
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                {{ form_row(journeyForm.journeyThirdLeg   ) }}
+                            </div>
+
+                            <div class="col">
+                                {{ form_row(journeyForm.journeyFourthLeg   ) }}
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col">
+                                {{ form_row(journeyForm.journeyFifthLeg   ) }}
+                            </div>
+
+                            <div class="col">
+                                {{ form_row(journeyForm.journeySixthLeg   ) }}
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                {{ form_row(journeyForm.journeyDateStart   ) }}
+                            </div>
+
+                            <div class="col">
+
+                            </div>
+
+                        </div>
+
+                        <p> * Les champs marqués par un astérisque sont obligatoires </p>
+
+                        <button type="submit" class="btn btn-success btn-sm">Enregistrer</button>
+                        {{ form_end(journeyForm) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <a href="javascript:history.go(-1)">
+                    <button type="button" class="btn btn-secondary btn-sm">Retour</button></a>&nbsp;
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+    </div>
+
+
+
+
+
+
 {% endblock %}
 
 {% block title %}

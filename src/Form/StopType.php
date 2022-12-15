@@ -16,18 +16,18 @@ class StopType extends AbstractType
         $builder
 
             ->add('stopName', TextType::class, [
-                'label' => 'Le nom de l\'étape *'
+                'label' => 'Nom *'
             ])
             ->add('stopLatitude', NumberType::class, [
-                'label' => 'La latitude de l\'étape ',
+                'label' => 'Latitude ',
                 'help'=>'ex -111.111111'
             ])
             ->add('stopLongitude', NumberType::class, [
-                'label' => 'La longitude de l\'étape ',
+                'label' => 'Longitude ',
                 'help'=>'ex -111.111111'
             ])
             ->add('stopPluscode', TextType::class, [
-                'label' => 'Le plusCode de l\'étape ',
+                'label' => 'PlusCode ',
                 'help'=>'ex 8FQ4QXFQ+33'
             ]);
 

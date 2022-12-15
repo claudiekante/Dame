@@ -21,7 +21,7 @@
 
                     {% for legList in legsList %}
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
+                            <li class="list-group-item text-bg-light">
                                 <a href="{{ path('leg_detail', {'id': legList.id}) }}" alt="détail du parcours">
                                     {{ legList.legName }}
                                 </a>
@@ -34,7 +34,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <a href="{{ path('leg_create') }}">
-                                <button type="button" class="btn btn-success btn-sm">Créer un nouveau parcours</button>
+                                <button type="button" class="btn btn-warning btn-sm">Créer un nouveau parcours</button>
                             </a>
                         </li>
                     </ul>
