@@ -18,10 +18,10 @@ class JourneyType extends AbstractType
     {
         $builder
             ->add('journeyName', TextType::class, [
-                'label'=>'Le nom du voyage *'
+                'label'=>'Nom *'
             ])
             ->add('journeyDescription', TextareaType::class, [
-                'label' => 'Description du voyage *'
+                'label' => 'Description *'
             ])
             ->add('journeyDateStart', DateType::class, [
                 'label'=>'Date du départ ',
@@ -30,41 +30,41 @@ class JourneyType extends AbstractType
                 'required' => false,
             ])
             ->add('journeyFirstLeg', EntityType::class, [
-                'label' => 'Premier parcours *',
+                'label' => 'Parcours 01 *',
                 'class'=>Leg::class,
                 'choice_label'=>'legName',
                 'placeholder'=>'choisir un parcours',
             ])
             ->add('journeySecondLeg', EntityType::class, [
-                'label' => 'Deuxième parcours',
+                'label' => 'Parcours 02',
                 'class'=>Leg::class,
                 'choice_label'=>'legName',
                 'placeholder'=>'choisir un parcours',
                 'required' => false,
             ])
             ->add('journeyThirdLeg', EntityType::class, [
-                'label' => 'Troisième parcours',
+                'label' => 'Parcours 03',
                 'class'=>Leg::class,
                 'choice_label'=>'legName',
                 'placeholder'=>'choisir un parcours',
                 'required' => false,
             ])
             ->add('journeyFourthLeg', EntityType::class, [
-                'label' => 'Quatrième parcours',
+                'label' => 'Parcours 04',
                 'class'=>Leg::class,
                 'choice_label'=>'legName',
                 'placeholder'=>'choisir un parcours',
                 'required' => false,
             ])
             ->add('journeyFifthLeg', EntityType::class, [
-                'label' => 'Cinquième parcours',
+                'label' => 'Parcours 05',
                 'class'=>Leg::class,
                 'choice_label'=>'legName',
                 'placeholder'=>'choisir un parcours',
                 'required' => false,
             ])
             ->add('journeySixthLeg', EntityType::class, [
-                'label' => 'Sixième parcours',
+                'label' => 'Parcours 06',
                 'class'=>Leg::class,
                 'choice_label'=>'legName',
                 'placeholder'=>'choisir un parcours',
