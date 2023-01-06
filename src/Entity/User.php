@@ -7,10 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="Il existe déjà un utilisateur avec cette adresse email")
+ * @UniqueEntity(fields={"pseudo"}, message="Il existe déjà un utilisateur avec ce pseudo")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -23,6 +25,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(message="L'adresse email indiquée n'est pas valide")
      */
     private $email;
 
@@ -38,22 +41,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, unique=true)
      */
     private $pseudo;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Assert\NotBlank(message="Merci de renseigner ton prénom")
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Assert\NotBlank(message="Merci de renseigner ton nom")
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @Assert\NotBlank(message="Merci de renseigner un numéro de téléphone")
      */
     private $phone;
 

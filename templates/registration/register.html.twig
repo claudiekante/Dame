@@ -1,17 +1,70 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}{{ parent() }} | S'enregistrer {% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    <div class="container">
+
+        <div class="row m-1">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 text-center">
+                <h3>Page pour enregistrer un nouvel utilisateur</h3>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div class="card text-bg-light">
+                    <div class="card-body">
+
+                        {{ form_start(registrationForm) }}
+                        {{ form_row(registrationForm.pseudo) }}
+                        {{ form_row(registrationForm.firstName) }}
+                        {{ form_row(registrationForm.lastName) }}
+                        {{ form_row(registrationForm.phone) }}
+                        {{ form_row(registrationForm.avatar) }}
+                        {{ form_row(registrationForm.email) }}
+                        {{ form_row(registrationForm.plainPassword, {
+                            label: 'Password'
+                        }) }}
+{#                        {{ form_row(registrationForm.agreeTerms) }}#}
+
+                        <button type="submit" class="btn btn-danger btn-sm">S'enregistrer</button>
+                        {{ form_end(registrationForm) }}
+
+
+                        <p> * Les champs marqués par un astérisque sont obligatoires </p>
+
+
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <a href="{{ path('main_home') }}">
+                    <button type="button" class="btn btn-secondary btn-sm">Retour à l'accueil</button></a>&nbsp;
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+    </div>
+
+
+
+
+
 {% endblock %}
