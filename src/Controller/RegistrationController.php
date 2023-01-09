@@ -27,6 +27,10 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+//            line to keep the image's data'
+            $file=$form->get('avatar')->getData();
+
             // encode the plain password
             $user->setPassword(
             $userPasswordHasher->hashPassword(
@@ -38,6 +42,17 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
+
+//            line to tranfer the img into the db with a new file name
+            if ($file){
+                $newFilename = $user->getPseudo()."-".$user->getId().".".$file->guessExtension();
+                $file->move($this->getParameter('upload_field_img_dir'), $newFilename);
+                $user->setAvatar($newFilename);
+            }
+
+            //il faut repeter le flush
+            $entityManager->persist($user);
+            $entityManager->flush();
 
             return $userAuthenticator->authenticateUser(
                 $user,

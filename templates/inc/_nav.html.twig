@@ -98,8 +98,27 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ path('app_register') }}" title="S'enregistrer">S'enregistrer</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ path('app_logout') }}" title="Se déconnecter">Se déconnecter</a>
+                    </li>
+
                 </ul>
                 {#                            <div class="d-flex nav-item">testo à droite</div> #}
+
+                {#  this shows avatar if user is connected #}
+                {% if(app.user) %}
+                    {% if(app.user.avatar) %}
+                        <div class="avatarnav"
+                             style="background-image: url('{{ asset('img/' ~ app.user.avatar) }}');">
+                        </div>
+                    {% else %}
+                        <div class="avatarnav"
+                             style="background-image: url('{{ asset('img/helmet.png') }}');">
+                        </div>
+                    {% endif %}
+                {% endif %}
+                {# end #}
+
             </div>
         </div>
     </div>
