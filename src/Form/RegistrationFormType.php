@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -35,7 +36,10 @@ class RegistrationFormType extends AbstractType
             ->add('avatar', FileType::class, [
                 'mapped' => false,
                 'required' => false,
-                'label'=>'Photo du profil'
+                'label'=>'Photo du profil',
+                'constraints' => [ new Image( ["mimeTypesMessage" => "Le format du fichier choisi n'est pas autorisé."])
+                ]
+
             ])
 
             ->add('email')
