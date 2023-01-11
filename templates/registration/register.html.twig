@@ -10,7 +10,11 @@
         <div class="row m-1">
             <div class="col-lg-3"></div>
             <div class="col-lg-6 text-center">
-                <h3>Page pour enregistrer un nouvel utilisateur</h3>
+                <h3>Nouvel Administrateur</h3>
+                <p>Bonjour {{ app.user.pseudo }}, ici, tu peux créer un nouveau compte administrateur,
+                    c'est-à-dire une personne qui, comme toi, peut modifier, créer ou supprimer des éléments de ce site.
+                    N'oublie pas de noter l'e-mail et le mot de passe pour les communiquer à ton nouveau collègue,
+                    il lui seront nécessaires pour se connecter ! </p>
             </div>
             <div class="col-lg-3"></div>
         </div>
@@ -33,11 +37,11 @@
                         }) }}
 {#                        {{ form_row(registrationForm.agreeTerms) }}#}
 
-                        <button type="submit" class="btn btn-danger btn-sm">S'enregistrer</button>
+                        <button type="submit" class="btn btn-danger btn-sm">Enregistrer</button>
                         {{ form_end(registrationForm) }}
 
 
-                        <p> * Les champs marqués par un astérisque sont obligatoires </p>
+                        <p class="helpNote"> * Les champs marqués par un astérisque sont obligatoires </p>
 
 
 

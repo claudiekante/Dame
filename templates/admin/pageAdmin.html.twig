@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="row m-1">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 text-center">
+                <h3>Page Administrateur</h3>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+
+        <div class="row m-1">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 text-center">
+                <p>Bonjour {{ app.user.pseudo }}, ici tu peux créer des nouvelles étapes, parcours ou voyages, ou modifier et/ou supprimer ceux qui existent déjà.</p>
+                   <p> Tu peux également créer un nouvel administrateur, en cliquant ici :  <a href="{{ path('app_register') }}">
+                           <button type="button" class="btn btn-success btn-sm">Nouvel Admin</button></a>&nbsp;</p>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">inserire qui il contenuto 01</div>
+            <div class="col-lg-4">
+               inserire qui il contenuto 02
+
+
+
+            </div>
+            <div class="col-lg-4">inserire qui il contenuto 03
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <a href="{{ path('main_home') }}">
+                    <button type="button" class="btn btn-secondary btn-sm">Retour à l'accueil</button></a>&nbsp;
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block title %}{{ parent() }} | Page Admin {% endblock %}
+
