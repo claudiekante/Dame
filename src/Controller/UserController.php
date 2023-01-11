@@ -2,35 +2,69 @@
 
 namespace App\Controller;
 
+
+use App\Form\ProfileType;
+use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends AbstractController
 {
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/profile", name="user_profile", methods={"GET", "POST"})
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function profil(Request $request, UserRepository $userRepository, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+        $currentUser = $userRepository->find($this->getUser());
+        $profileForm = $this->createForm(ProfileType::class, $currentUser);
+        $profileForm->handleRequest($request);
 
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
+        if ($profileForm->isSubmitted() && $profileForm->isValid()) {
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
-    }
+//            line to keep the image's data'
+            $file=$profileForm->get('avatar')->getData();
 
-    /**
-     * @Route("/logout", name="app_logout")
-     */
-    public function logout(): void
-    {
-        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+            // encode the plain password
+            $currentUser->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $currentUser,
+                    $profileForm->get('plainPassword')->getData()
+                )
+            );
+
+            $entityManager->persist($currentUser);
+            $entityManager->flush();
+            // do anything else you need here, like send an email
+
+//            line to tranfer the img into the db with a new file name
+            if ($file){
+                $newFilename = $currentUser->getPseudo()."-".$currentUser->getId().".".$file->guessExtension();
+                $file->move($this->getParameter('upload_field_img_dir'), $newFilename);
+                $currentUser->setAvatar($newFilename);
+            }
+
+            //il faut repeter le flush
+            $entityManager->persist($currentUser);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'La modification a bien été enregistrée');
+            return $this->redirectToRoute("main_home");
+
+//            return $userAuthenticator->authenticateUser(
+//                $user,
+//                $authenticator,
+//                $request
+//            );
+        }
+
+
+
+        return $this->renderForm('user/profile.html.twig', [
+            'profileForm' => $profileForm,
+        ]);
     }
 }

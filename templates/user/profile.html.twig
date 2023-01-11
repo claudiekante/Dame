@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | Modifier son profil {% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row m-1">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 text-center">
+                <h3>Mon profil</h3>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+        <div class="row m-1">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 d-flex justify-content-center">
+                {% if(app.user.avatar) %}
+                    <div class="avatarPage"
+                         style="background-image: url('{{ asset('img/' ~ app.user.avatar) }}');">
+                    </div>
+
+                {% else %}
+                    <div class="avatarPage"
+                         style="background-image: url('{{ asset('img/helmet.png') }}');">
+                    </div>
+                {% endif %}
+
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+        <div class="row m-1">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 text-center">
+                <p>Bonjour {{ app.user.pseudo }}, tu peux vérifier et/ou modifier ton profil ici</p>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div class="card text-bg-light">
+                    <div class="card-body">
+
+                        {{ form_start(profileForm) }}
+                        {{ form_row(profileForm.pseudo) }}
+                        {{ form_row(profileForm.firstName) }}
+                        {{ form_row(profileForm.lastName) }}
+                        {{ form_row(profileForm.phone) }}
+                        {{ form_row(profileForm.avatar) }}
+                        {{ form_row(profileForm.email) }}
+                        <p class="helpNote">Tu doit insérer ton ancien mot de passe, ou en choisir un nouveau, pour enregistrer les changements souhaités </p>
+                        {{ form_row(profileForm.plainPassword, {
+                            label: 'Password'
+                        }) }}
+                        {#                        {{ form_row(registrationForm.agreeTerms) }}#}
+
+                        <button type="submit" class="btn btn-danger btn-sm">Modifier</button>
+                        {{ form_end(profileForm) }}
+
+
+                        <p> * Les champs marqués par un astérisque sont obligatoires </p>
+
+
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="col-lg-3">
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <a href="{{ path('main_home') }}">
+                    <button type="button" class="btn btn-secondary btn-sm">Retour à l'accueil</button></a>&nbsp;
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+    </div>
+{% endblock %}
