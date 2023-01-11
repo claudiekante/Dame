@@ -34,47 +34,49 @@
 
                     {% if is_granted ("ROLE_ADMIN") %}
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            Voyages
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ path('journey_list') }}"
-                                   title="Liste des voyages enregistrés">Liste complète</a></li>
-                            <li><a class="dropdown-item" href="{{ path('journey_create') }}"
-                                   title="Création d'un nouveau voyage">Créer un voyage</a></li>
-                            {#                            <li> #}
-                            {#                                <hr class="dropdown-divider"> #}
-                            {#                            </li> #}
-                            {#                            <li><a class="dropdown-item" href="#">Something else here</a></li> #}
-                            {#                        </ul> #}
+{#                    <li class="nav-item dropdown">#}
+{#                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"#}
+{#                           aria-expanded="false">#}
+{#                            Voyages#}
+{#                        </a>#}
+{#                        <ul class="dropdown-menu">#}
+{#                            <li><a class="dropdown-item" href="{{ path('journey_list') }}"#}
+{#                                   title="Liste des voyages enregistrés">Liste complète</a></li>#}
+{#                            <li><a class="dropdown-item" href="{{ path('journey_create') }}"#}
+{#                                   title="Création d'un nouveau voyage">Créer un voyage</a></li>#}
+{#                            #}{#                            <li> #}
+{#                            #}{#                                <hr class="dropdown-divider"> #}
+{#                            #}{#                            </li> #}
+{#                            #}{#                            <li><a class="dropdown-item" href="#">Something else here</a></li> #}
+{#                            #}{#                        </ul> #}
 
 
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            Parcours
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ path('leg_list') }}" title="Liste des parcours enregistrés">Tous les parcours</a></li>
-                            <li><a class="dropdown-item" href="{{ path('leg_create') }}" title="Création d'un nouveau parcours">Créer un nouveau parcours</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            Etapes
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ path('stop_list') }}" title="Liste des étapes enregistrées">Toutes les étapes</a></li>
-                            <li><a class="dropdown-item" href="{{ path('stop_create') }}" title="Création d'une nouvelle étape">Créer une nouvelle étape</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
+{#                            </li>#}
+{#                        </ul>#}
+{#                    </li>#}
+{#                    <li class="nav-item dropdown">#}
+{#                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"#}
+{#                           aria-expanded="false">#}
+{#                            Parcours#}
+{#                        </a>#}
+{#                        <ul class="dropdown-menu">#}
+{#                            <li><a class="dropdown-item" href="{{ path('leg_list') }}" title="Liste des parcours enregistrés">Tous les parcours</a></li>#}
+{#                            <li><a class="dropdown-item" href="{{ path('leg_create') }}" title="Création d'un nouveau parcours">Créer un nouveau parcours</a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+{#                    <li class="nav-item dropdown">#}
+{#                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"#}
+{#                           aria-expanded="false">#}
+{#                            Etapes#}
+{#                        </a>#}
+{#                        <ul class="dropdown-menu">#}
+{#                            <li><a class="dropdown-item" href="{{ path('stop_list') }}" title="Liste des étapes enregistrées">Toutes les étapes</a></li>#}
+{#                            <li><a class="dropdown-item" href="{{ path('stop_create') }}" title="Création d'une nouvelle étape">Créer une nouvelle étape</a></li>#}
+{#                        </ul>#}
+{#                    </li>#}
+
+
+                        <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ path('admin_dashboard')}}" title="Page admin">Page Admin</a>
                     </li>
 

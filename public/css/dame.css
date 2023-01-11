@@ -34,6 +34,25 @@ a.listTitle:link, a.listTitle:visited, a.listTitle:active {
     text-decoration: none;
 }
 
+a.listPageAdmin:link, a.listPageAdmin:visited, a.listPageAdmin:active {
+
+    text-decoration: underline;
+    color: black;
+}
+
+.groupTitle {
+    font-family: 'Faster One', cursive;
+    font-size: 200%;
+    /*color: #FFFFFF;*/
+}
+
+.groupSubTitle {
+    /*font-family: 'Racing Sans One', cursive;*/
+    /*font-size: 200%;*/
+    /*color: #FFFFFF;*/
+    font-weight: bold;
+}
+
 .listTitle{
     font-family: 'Racing Sans One', cursive;
     color: #FFFFFF;

@@ -16,7 +16,8 @@
         <div class="row m-1">
             <div class="col-lg-3"></div>
             <div class="col-lg-6 text-center">
-                <p>Bonjour {{ app.user.pseudo }}, ici tu peux créer des nouvelles étapes, parcours ou voyages, ou modifier et/ou supprimer ceux qui existent déjà.</p>
+                <p>Bonjour {{ app.user.pseudo }}, ici tu peux créer des nouvelles étapes, parcours ou voyages.</p>
+                <p>Tu peux cliquer sur chaque élément déjà enregistré pour le modifier et/ou supprimer.</p>
                    <p> Tu peux également créer un nouvel administrateur, en cliquant ici :  <a href="{{ path('app_register') }}">
                            <button type="button" class="btn btn-success btn-sm">Nouvel Admin</button></a>&nbsp;</p>
             </div>
@@ -24,20 +25,101 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4">inserire qui il contenuto 01</div>
             <div class="col-lg-4">
-               inserire qui il contenuto 02
 
+                <div class="card m-3">
+                    <div class="card-header"> <span class="groupTitle">ETAPES</span> </div>
+                    <div class="card-body">
+
+                        <a href="{{ path('stop_create') }}">
+                            <button type="button" class="btn btn-success btn-sm">Créer une nouvelle étape</button>
+                        </a>
+
+                    </div>
+                    <div class="card-header"><p class="card-title"><span class="groupSubTitle">Etapes enregistrées</span></p></div>
+                    <div class="card-body">
+
+                        {% for stopList in stopsList %}
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item text-bg-light">
+                                    <a href="{{ path('stop_detail', {'id': stopList.id}) }}" alt="détail de l'étape" class="listPageAdmin">
+                                        {{ stopList.stopName }}
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endfor %}
+
+                    </div>
+                </div>
 
 
             </div>
-            <div class="col-lg-4">inserire qui il contenuto 03
+            <div class="col-lg-4">
+
+
+
+                <div class="card m-3">
+                    <div class="card-header"> <span class="groupTitle">PARCOURS</span> </div>
+                    <div class="card-body">
+
+                        <a href="{{ path('leg_create') }}">
+                            <button type="button" class="btn btn-success btn-sm">Créer un nouveau parcours</button>
+                        </a>
+
+                    </div>
+                    <div class="card-header"><p class="card-title"><span class="groupSubTitle">Parcours enregistrés</span></p></div>
+                    <div class="card-body">
+
+                        {% for legList in legsList %}
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item text-bg-light">
+                                    <a href="{{ path('leg_detail', {'id': legList.id}) }}" alt="détail du parcours" class="listPageAdmin">
+                                        {{ legList.legName }}
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-lg-4">
+
+
+                <div class="card m-3">
+                    <div class="card-header"> <span class="groupTitle">VOYAGES</span> </div>
+                    <div class="card-body">
+
+                        <a href="{{ path('journey_create') }}">
+                            <button type="button" class="btn btn-success btn-sm">Créer un nouveau voyages</button>
+                        </a>
+
+                    </div>
+                    <div class="card-header"><p class="card-title"><span class="groupSubTitle">Voyages enregistrés</span></p></div>
+                    <div class="card-body">
+
+                        {% for journeyList in journeysList %}
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item text-bg-light">
+                                    <a href="{{ path('journey_detail', {'id': journeyList.id}) }}" alt="détail du voyage" class="listPageAdmin">
+                                        {{ journeyList.journeyName }}
+                                    </a>
+                                </li>
+                            </ul>
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+
             </div>
         </div>
 
         <div class="row m-3">
             <div class="col-lg-3"></div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 d-flex justify-content-center" >
                 <a href="{{ path('main_home') }}">
                     <button type="button" class="btn btn-secondary btn-sm">Retour à l'accueil</button></a>&nbsp;
             </div>
