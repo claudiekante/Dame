@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="row m-1">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10 text-center">
+                <h3>Une nouvelle étape</h3>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <div class="card text-bg-light">
+                    <div class="card-body">
+
+                        {{ form_start(modifyStopForm) }}
+                        {{ form_row(modifyStopForm.stopName) }}
+
+                        <div class="row">
+                            <div class="col">
+                                {{ form_row(modifyStopForm.stopLatitude) }}
+                            </div>
+
+                            <div class="col">
+                                {{ form_row(modifyStopForm.stopLongitude) }}
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                {{ form_row(modifyStopForm.stopPluscode) }}
+                            </div>
+
+                            <div class="col">
+
+                            </div>
+
+                        </div>
+
+
+                        <p class="helpNote"> * Les champs marqués par un astérisque sont obligatoires </p>
+
+                        <button type="submit" class="btn btn-success btn-sm">Enregistrer</button>
+                        {{ form_end(modifyStopForm) }}
+
+
+
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+            </div>
+            <div class="col-lg-1">
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <a href="javascript:history.go(-1)">
+                    <button type="button" class="btn btn-secondary btn-sm">Retour</button></a>&nbsp;
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+    </div>
+
+
+    {#{{ form_start(stopForm) }}#}
+    {#    {{ form_row(stopForm.stopName) }}#}
+    {#    {{ form_row(stopForm.stopLatitude) }}#}
+    {#    {{ form_row(stopForm.stopLongitude) }}#}
+    {#    {{ form_row(stopForm.stopPluscode) }}#}
+
+    {#    <button type="submit">Créer une étape</button>#}
+    {#    {{ form_end(stopForm) }}#}
+
+    {#    <p>Les champs marqués par un astérisque sont obligatoires </p>#}
+
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} | Création d'une étape {% endblock %}
+

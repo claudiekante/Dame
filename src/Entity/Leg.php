@@ -51,12 +51,13 @@ class Leg
 
     /**
      * @ORM\ManyToOne(targetEntity=Stop::class, inversedBy="legStart")
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $startStop;
 
     /**
      * @ORM\ManyToOne(targetEntity=Stop::class, inversedBy="legEnd")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $endStop;
 

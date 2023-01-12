@@ -91,9 +91,22 @@
 
         <div class="row m-3">
             <div class="col-lg-1"></div>
-            <div class="col-lg-10">
-                <a href="{{ path('stop_list') }}">
+            <div class="col-lg-1 p-1">
+                <a href="{{ path('admin_dashboard') }}">
                     <button type="button" class="btn btn-secondary btn-sm">Retour</button></a>&nbsp;
+            </div>
+            <div class="col-lg-1 p-1">
+                <a href="{{ path('stop_modifyDetail', {'id': stop.id})  }}">
+                    <button type="button" class="btn btn-success btn-sm">Modifier</button></a>&nbsp;
+            </div>
+            <div class="col-lg-8 p-1 border border-danger">
+                <a href="{{ path('stop_deleteDetail', {'id': stop.id})  }}">
+                    <button type="button" class="btn btn-danger btn-sm">Supprimer</button></a>&nbsp;
+                Attenbzione Anttenzione Attenzione Attenbzione Anttenzione Attenzione
+                Attenbzione Anttenzione Attenzione Attenbzione Anttenzione Attenzione
+                Attenbzione Anttenzione Attenzione Attenbzione Anttenzione Attenzione
+                Attenbzione Anttenzione Attenzione Attenbzione Anttenzione Attenzione
+                Attenbzione Anttenzione Attenzione Attenbzione Anttenzione Attenzione
             </div>
             <div class="col-lg-1"></div>
         </div>
